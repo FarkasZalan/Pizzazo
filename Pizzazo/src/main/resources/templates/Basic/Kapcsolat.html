@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>A te pizzázód</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous"/>
+    <link th:href="@{/css/basic.css}" rel="stylesheet">
+</head>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,600&display=swap");
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #333;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #ed4e53;
+  color: white;
+}
+.parallax {
+background-image: url(../../kepek/pizzaParallax.png);
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.img{
+    position: absolute;
+    padding: 0;
+    margin-left: 60%;
+}
+
+</style>
+
+<body>
+
+<div th:if="${navi}" th:unless="${admin}" class="topnav">
+    <a href="/">Főoldal</a>
+    <a href="/termekek">Termékek</a>
+    <a class="active" href="/kapcsolat">Kapcsolat</a>
+    <a href="/fiok">Fiók</a>
+    <a href="/kilepes">Kilépés</a>
+    <a href="/kosar">Kosár</a>
+</div>
+
+<div th:unless="${navi}" class="topnav">
+    <a href="/">Főoldal</a>
+    <a href="/termekek">Termékek</a>
+    <a class="active" href="/kapcsolat">Kapcsolat</a>
+    <a href="/bejelentkezes">Bejelentkezés</a>
+    <a href="/kosar">Kosár</a>
+</div>
+
+<div th:if="${admin}" class="topnav">
+    <a href="/">Főoldal</a>
+    <a href="/termekek">Termékek</a>
+    <a class="active" href="/kapcsolat">Kapcsolat</a>
+    <a href="/admin">Admin Fiók</a>
+    <a href="/kilepes">Kilépés</a>
+    <a href="/kosar">Kosár</a>
+</div>
+
+<div class="container">
+    <h2>Bemutatkozás</h2><br>
+    <p>Alapulásunk éve jövőre töli be az 1 évet. Szegedi telephellyel rendelkező feltörekvő jövendőbeli multi
+        gyorsétterem vagyunk.
+        <br>Magasan képzett szakácsainkkal minden erőnkkel azon leszünk, hogy a lehető legjobb minőségben jutassuk
+        el<br>
+        hozzád a rendelt termékeidet.<br><br></p>
+    <h2>Elérhetőség</h2><br>
+    <p>Ha bármi kérdésed lenne nyugodtan keress minket telenonon a 06 30 123 4567 telefonszámon<br>
+        vagy pedig küld egy emailt a nincsfiok@gmal.com email címre.
+        Címünk: 6723 Szeged, Nekeresd utca 1.</p>
+    <br>
+    Reméljük hamarosan ellátogatsz hozzánk, addig is ha rendelnél tőlünk <a href="/termekek">itt</a> körülnézhetsz
+    termékeink között.
+</div>
+<img th:src="@{kepek/pizzaParallax.png}">
+
+</body>
+</html>

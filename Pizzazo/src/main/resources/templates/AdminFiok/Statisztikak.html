@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>A te pizzázód</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous"/>
+    <link th:href="@{/css/basic.css}" rel="stylesheet">
+</head>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,600&display=swap");
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #343a40;
+  height: 100vh;
+    color:#333;
+}
+
+.container {
+    margint-top:20%;
+    max-width: 1300px;
+    width: 100%;
+    background: #343a40;
+    padding: 25px 30px;
+    border-radius: 5px;
+
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #ed4e53;
+  color: white;
+}
+
+.modositgomb{
+    height: 45px;
+    margin-left:36.5%;
+    width: 380px;
+    outline: none;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    background: #ed4e53;
+    cursor: pointer;
+}
+
+.modositgomb:hover{
+outline: none;
+    color: #ed4e53;
+    border: 1px solid #ed4e53;
+    background: #fff;
+}
+table{
+    border-radius: 25px;
+    outline: none;
+}
+
+.table td, .table th {
+    border-top: none;
+    vertical-align: middle;
+}
+
+.table-dark td {
+border: none;
+}
+
+.kiemelt_vegosszeg {
+    text-align: center;
+    outline: 1px solid #fff !Important;
+}
+
+.table-dark td, .table-dark th, .table-dark thead th {
+    border-color: #fff;
+}
+
+.table td, .table th {
+    border-top: none;
+}
+
+.kiemelt_azonosito {
+text-align: center;
+margin: 0;
+border-top: 1px solid #fff !Important;
+    border-bottom: 1px solid #fff !Important;
+    border-left: 1px solid #fff !Important;
+}
+.kiemelt_altalanos {
+margin: 0;
+border-top: 1px solid #fff !Important;
+    border-bottom: 1px solid #fff !Important;
+}
+
+.kiemelt_mennyiseg {
+    text-align: center;
+    border-top: 1px solid #fff !Important;
+    border-bottom: 1px solid #fff !Important;
+}
+
+
+
+
+</style>
+<body>
+<div class="topnav">
+    <a href="/">Főoldal</a>
+    <a href="/termekek">Termékek</a>
+    <a href="/kapcsolat">Kapcsolat</a>
+    <a class="active" href="/statisztikak">Rendelési statisztikák</a>
+    <a href="/kilepes">Kilépés</a>
+    <a href="/kosar">Kosár</a>
+</div>
+<div th:if="${Uzenet}" class="alert alert-info" role="alert" th:text="${Uzenet}"></div>
+<div class="container">
+    <table class="table table-dark kiemelt_vegosszeg" id="statisztikak">
+        <td class="also_vonal">Rendelési statisztikák</td>
+        <tr>
+            <td>
+                <table class="table table-dark kiemelt_vegosszeg" id="legtobbetRendelt">
+                    <td class="also_vonal">Legnagyobb összegű rendelés</td>
+                    <tr>
+                        <td>
+                            <table class="table table-dark" id="belsoVegosszeg">
+                                <tr class="also_vonal">
+                                    <td class="kiemelt_azonosito">Azonosító</td>
+                                    <td class="kiemelt_azonosito">Rendelő email címe</td>
+                                    <td class="kiemelt_altalanos">Rendelés időpontja</td>
+                                    <td class="kiemelt_vegosszeg">Végösszeg(Ft)</td>
+                                </tr>
+                                <tbody>
+                                <tr>
+                                    <td class="kiemelt_azonosito" th:each="legtobbFizetettId : ${legtobbFizetettId}"
+                                        th:text="${legtobbFizetettId}"></td>
+                                    <td class="kiemelt_azonosito" th:each="legtobbNev : ${legtobbNev}"
+                                        th:text="${legtobbNev}"></td>
+                                    <td class="kiemelt_azonosito"
+                                        th:each="legtobbFizetettIdopont : ${legtobbFizetettIdopont}"
+                                        th:text="${legtobbFizetettIdopont}"></td>
+                                    <td class="kiemelt_vegosszeg"
+                                        th:each="legtobbFizetettOsszeg : ${legtobbFizetettOsszeg}"
+                                        th:text="${legtobbFizetettOsszeg}"></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+
+                <table class="table table-dark kiemelt_vegosszeg" id="legtobbetVittAru">
+                    <td class="also_vonal">Legtöbbet rendelt termék</td>
+                    <tr>
+                        <td>
+                            <table class="table table-dark" id="belsolegtobb">
+                                <tr class="also_vonal">
+                                    <td class="kiemelt_azonosito">Termék neve</td>
+                                    <td class="kiemelt_altalanos">Eddigi összes rendelés</td>
+                                    <td class="kiemelt_vegosszeg">Legutolsó rendelés időpontja</td>
+                                </tr>
+                                <tbody>
+                                <tr>
+                                    <td class="kiemelt_azonosito" th:each="legtobbTermekNeve : ${legtobbTermekNeve}"
+                                        th:text="${legtobbTermekNeve}"></td>
+                                    <td class="kiemelt_azonosito"
+                                        th:each="legtobbOsszMennyisege : ${legtobbOsszMennyisege}"
+                                        th:text="${legtobbOsszMennyisege}"></td>
+                                    <td class="kiemelt_vegosszeg"
+                                        th:each="legtobbFizetettId : ${legtobbUtolsoRendelesIdopontja}"
+                                        th:text="${legtobbUtolsoRendelesIdopontja}"></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+
+                <table class="table table-dark kiemelt_vegosszeg" id="legkevesebbetVittAru">
+                    <td class="also_vonal">Legkevesebbet rendelt termék</td>
+                    <tr>
+                        <td>
+                            <table class="table table-dark" id="belsolegkevesebb">
+                                <tr class="also_vonal">
+                                    <td class="kiemelt_azonosito">Termék neve</td>
+                                    <td class="kiemelt_altalanos">Eddigi összes rendelés</td>
+                                    <td class="kiemelt_vegosszeg">Legutolsó rendelés időpontja</td>
+                                </tr>
+                                <tbody>
+                                <tr>
+                                    <td class="kiemelt_azonosito"
+                                        th:each="kevesbeKelendoTermekNeve : ${kevesbeKelendoTermekNeve}"
+                                        th:text="${kevesbeKelendoTermekNeve}"></td>
+                                    <td class="kiemelt_azonosito"
+                                        th:each="kevesbeKelendoOsszMennyisege : ${kevesbeKelendoOsszMennyisege}"
+                                        th:text="${kevesbeKelendoOsszMennyisege}"></td>
+                                    <td class="kiemelt_vegosszeg"
+                                        th:each="kevesbeKelendoUtolsoRendelesIdopontja : ${kevesbeKelendoUtolsoRendelesIdopontja}"
+                                        th:text="${kevesbeKelendoUtolsoRendelesIdopontja}"></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <br>
+
+    <form action="/admin" method="post">
+        <input class="modositgomb" type="submit" name="submit" value="Vissza">
+        <br>
+    </form>
+</div>
+</body>
+</html>

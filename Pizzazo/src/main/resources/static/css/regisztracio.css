@@ -1,0 +1,156 @@
+body {
+    display: inline;
+    justify-content: center;
+    height: 100vh;
+    background: url(../../kepek/regisztralHatter.png) repeat;
+    color:#333;
+}
+
+.container {
+    margin-left: 30%;
+    margin-top: 10%;
+    max-width: 700px;
+    width: 100%;
+    background: #eff0f5;
+    padding: 25px 30px;
+    border-radius: 5px;
+
+}
+
+.container .title {
+    font-size: 25px;
+    font-weight: 500;
+    color:#333;
+}
+
+.container .title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background: linear-gradient(135deg, #ed4e53, #d8777a);
+}
+
+.container form .user-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color:#333;
+    margin: 20px 0 12px 0;
+}
+
+form .user-details .input-box {
+    width: calc(100% / 2 - 20px);
+    margin-bottom: 15px;
+}
+
+.user-details .input-box .details {
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+
+form .signup input {
+    height: 40px;
+    width: 100px;
+    outline: none;
+    color: #333;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #ed4e53, #d8777a);
+    cursor: pointer;
+}
+
+form .signup input:hover {
+    background: linear-gradient(-135deg, #ed4e53, #d8777a);
+}
+
+.user-details .input-box input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+form .button {
+    margin-left: 25%;
+    height: 45px;
+    width: 50%;
+}
+
+form .button input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    background: #ed4e53;
+    cursor: pointer;
+}
+
+form .button input:hover {
+outline: none;
+    color: #ed4e53;
+    border: 1px solid #ed4e53;
+    background: #fff;
+}
+
+@media (max-width: 584px) {
+    .container {
+        max-width: 100%;
+    }
+
+    form .user-details .input-box {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    form .gender-details .category {
+        width: 100%;
+    }
+
+    .container form .user-details {
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+
+    .user-details::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+.title {
+    text-align: center;
+}
+
+form .vissza input {
+    height: 40px;
+    width: 100px;
+    outline: none;
+    color: #333;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #ed4e53, #d8777a);
+    cursor: pointer;
+}
+
+form .vissza input:hover {
+    background: linear-gradient(-135deg, #ed4e53, #d8777a);
+}

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>A te pizzázód</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous"/>
+    <link th:href="@{/css/basic.css}" rel="stylesheet">
+    <title>A te pizzáz</title>
+</head>
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,600&display=swap");
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #333;
+  color:white;
+}
+
+.container {
+    margint-top:20%;
+    max-width: 1500px;
+    width: 100%;
+    background: #343a40;
+    padding: 25px 30px;
+    border-radius: 5px;
+
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #ed4e53;
+  color: white;
+}
+.parallax {
+background-image: url(../../kepek/pizzaParallax.png)
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.kiemelt_vegosszeg {
+    outline: 1px solid #fff !Important;
+    color: white;
+}
+
+.kiemelt_azonosito {
+text-align: center;
+margin: 0;
+border-top: 1px solid #fff !Important;
+    border-bottom: 1px solid #fff !Important;
+    border-left: 1px solid #fff !Important;
+}
+.kiemelt_altalanos {
+margin: 0;
+border-top: 1px solid #fff !Important;
+    border-bottom: 1px solid #fff !Important;
+}
+
+.kiemelt_mennyiseg {
+    text-align: center;
+    border-top: 1px solid #fff !Important;
+    border-bottom: 1px solid #fff !Important;
+}
+
+table{
+    border-radius: 25px;
+    outline: none;
+}
+
+.table td, .table th {
+    border-top: none;
+    vertical-align: middle;
+}
+.also_vonal {
+     border-bottom: 1px solid #fff !Important;
+}
+
+.felso_vonal {
+     border-top: 1px solid #fff !Important;
+}
+
+.kozepre {
+    text-align: center;
+    margin-left:30px;
+}
+
+.hamburger_gomb {
+text-align: center;
+    margin-right: -25px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 45px;
+    outline: none;
+    color: #fff;
+    border: 1px solid #ed4e53;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    background: #ed4e53;
+    cursor: pointer;
+}
+
+.hamburger_gomb:hover{
+    outline: none;
+    color: #ed4e53;
+    border: 1px solid #ed4e53;
+    background: #fff;
+}
+
+.alkoholos_gomb {
+text-align: center;
+    margin-right: -55px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 45px;
+    outline: none;
+    color: #fff;
+    border: 1px solid #ed4e53;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    background: #ed4e53;
+    cursor: pointer;
+}
+
+.alkoholos_gomb:hover{
+    outline: none;
+    color: #ed4e53;
+    border: 1px solid #ed4e53;
+    background: #fff;
+}
+
+.alkoholmentes_gomb {
+text-align: center;
+    margin-right: -30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 45px;
+    outline: none;
+    color: #fff;
+    border: 1px solid #ed4e53;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    background: #ed4e53;
+    cursor: pointer;
+}
+
+.alkoholmentes_gomb:hover{
+    outline: none;
+    color: #ed4e53;
+    border: 1px solid #ed4e53;
+    background: #fff;
+}
+
+.table-dark td {
+border: none;
+}
+
+.kosargomb{
+vertical-align: middle !important;
+padding-left: 15px;
+    padding-right: 15px;
+    height: 45px;
+    outline: none;
+    color: #fff;
+    border: 1px solid #ed4e53;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    background: #ed4e53;
+    cursor: pointer;
+}
+
+.kosargomb:hover{
+outline: none;
+    color: #ed4e53;
+    border: 1px solid #ed4e53;
+    background: #fff;
+}
+
+
+.modositgomb{
+    height: 45px;
+    margin-left:36%;
+    width: 380px;
+    outline: none;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    background: #ed4e53;
+    cursor: pointer;
+}
+
+.modositgomb:hover{
+outline: none;
+    color: #ed4e53;
+    border: 1px solid #ed4e53;
+    background: #fff;
+}
+
+</style>
+
+<body>
+
+<div th:if="${navi}" th:unless="${admin}" class="topnav">
+    <a href="/">Főoldal</a>
+    <a href="/termekek">Termékek</a>
+    <a href="/kapcsolat">Kapcsolat</a>
+    <a href="/fiok">Fiók</a>
+    <a href="/kilepes">Kilépés</a>
+    <a class="active" href="/kosar">Rendelés</a>
+</div>
+
+<div th:unless="${navi}" class="topnav">
+    <a href="/">Főoldal</a>
+    <a href="/termekek">Termékek</a>
+    <a href="/kapcsolat">Kapcsolat</a>
+    <a href="/bejelentkezes">Bejelentkezés</a>
+    <a class="active" href="/kosar">Rendelés</a>
+</div>
+
+<div th:if="${admin}" class="topnav">
+    <a href="/">Főoldal</a>
+    <a href="/termekek">Termékek</a>
+    <a href="/kapcsolat">Kapcsolat</a>
+    <a href="/admin">Admin Fiók</a>
+    <a href="/kilepes">Kilépés</a>
+    <a class="active" href="/kosar">Rendelés</a>
+</div>
+<div th:if="${Uzenet}" class="alert alert-info" role="alert" th:text="${Uzenet}"></div>
+<div class="container">
+    <h1>Köszönjük, hogy tőlünk rendeltél!</h1>
+    <h2>Rendelésedet már készítjük és a lehető leghamarabb el is juttatjuk hozzád.</h2>
+    <table class="table table-dark" id="rendelesekTabla">
+        <thead>
+        <tr class="also_vonal">
+            <th scope="col">Rendelő email címe</th>
+            <th scope="col">Rendelő neve</th>
+            <th scope="col">Szállítási cím</th>
+            <th scope="col">Elérhetőség</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="felso_vonal" th:each="adat : ${adatok}">
+            <td th:text="${adat.id}"></td>
+            <td th:text="${adat.nev}"></td>
+            <td th:text="${adat.lakcim}"></td>
+            <td th:text="${adat.telefonszam}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-dark kiemelt_vegosszeg" id="pizzaktabla">
+        <td class="also_vonal">Rendelés részletei</td>
+        <tr>
+            <td>
+                <table class="table table-dark" id="pizzaTermek">
+                    <tr class="also_vonal">
+                        <td scope="col">Rendelés azonosítója</td>
+                        <td scope="col">Rendelés időpontja</td>
+                        <td scope="col">Termék neve</td>
+                        <td scope="col">Rendelt mennyiség</td>
+                        <td scope="col">Fizetési mód</td>
+
+                    <tr>
+                        <td th:each="azonosito: ${rendelesAzonosito}" th:text="${azonosito}"></td>
+                        <td th:each="idopont: ${rendelesIdopontja}" th:text="${idopont}"></td>
+                        <td th:each="termekek: ${bevasarloLista}" th:utext="${termekek}"></td>
+                        <td th:each="mennyiseg: ${mennyiseg}" th:utext="${mennyiseg}"></td>
+                        <td scope="col">Kártyával fizetés a futárnál</td>
+                    <tr class="felso_vonal">
+                        <td scope="col">Végösszeg:</td>
+                    </tr>
+                    <td th:each="osszeg: ${vegosszeg}" th:text="${osszeg} + ' Ft'"></td>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+    <br>
+    <form action="/uj_rendeles" method="post">
+        <input class="modositgomb" type="submit" name="submit" value="Új rendelés leadása">
+    </form>
+</div>
+</body>
+</html>
