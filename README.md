@@ -1,5 +1,4 @@
 # Pizzazo
-Egyetemi projekt
 
 ## Felhasználókezelés
 A felhasználó regisztrálhat ha még nincs fiókja és a kötelező adatok megadása után már bejelentkezhet, ahol áttekintheti a saját adatait, módosíthatja azokat, illetve megtekintheti a korábban leadott rendeléseit is.
