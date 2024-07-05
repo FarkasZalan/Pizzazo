@@ -208,8 +208,8 @@ INSERT  into hamburger (hamburger_neve, hamburger_ara, tartalom, kep) VALUES ('K
 ON DUPLICATE KEY UPDATE hamburger_neve = VALUES (hamburger_neve), hamburger_ara = VALUES(hamburger_ara), tartalom = VALUES(tartalom), kep = VALUES(kep);
 
 --Alkoholos ital feltöltése
-INSERT  into alkoholosItal (alkoholos_ital_neve, alkoholos_ital_ara, alkohol_szazalek, kep) VALUES ('Heineken Sör 0.5 liter' ,340,'4.5%', "")
-ON DUPLICATE KEY UPDATE alkoholos_ital_neve = VALUES (alkoholos_ital_neve), alkoholos_ital_ara = VALUES(alkoholos_ital_ara), alkohol_szazalek = VALUES(alkohol_szazalek), kep = VALUES(kep);
+INSERT INTO alkoholosItal (alkoholos_ital_neve, alkoholos_ital_ara, alkohol_szazalek, kep) VALUES ('Heineken Sör 0.5 liter', 340, '4.5%', "")
+    ON DUPLICATE KEY UPDATE alkoholos_ital_neve = VALUES(alkoholos_ital_neve), alkoholos_ital_ara = VALUES(alkoholos_ital_ara), alkohol_szazalek = VALUES(alkohol_szazalek), kep = VALUES(kep);
 INSERT  into alkoholosItal (alkoholos_ital_neve, alkoholos_ital_ara, alkohol_szazalek, kep) VALUES ('Heineken Sör 0.3 liter',290,'zero', "")
 ON DUPLICATE KEY UPDATE alkoholos_ital_neve = VALUES (alkoholos_ital_neve), alkoholos_ital_ara = VALUES(alkoholos_ital_ara), alkohol_szazalek = VALUES(alkohol_szazalek), kep = VALUES(kep);
 

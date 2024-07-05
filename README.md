@@ -12,8 +12,7 @@ Ebben a spring alkalmazásban lehetőség van áttekinteni a pizzázó termékei
 Rendelés leadását követően a felhasználó emailben kap értesítést arról, hogy a rendelése feldolgozásra kerűlt.
 
 ### Egyéb tudnivalók
-Az alkalmazás spring keretrendszerben készűlt java nyelven maven és thymeleaf segítségével localhost adatbázissal.
-Az oldal elérése indítás után a localhost:8080-as porton érhető el.
+Az alkalmazás spring keretrendszerben készűlt java nyelven maven és thymeleaf segítségével MySQL adatbázissal illetve futtatható Docker környezetben(mysql image megléte szükséges hozzá) majd a docker-compose up --build parancs kiadása után a localhost:8090 url-en el is indul az alkalmazás.
 Meg vannak benne valósítva a CRUD műveletek a megfelelő hibakezelésekkel együtt valamint a JDBC alkalmazása mellett sql lekérdezésekkel is dolgoztam a projekten belül.
 
 

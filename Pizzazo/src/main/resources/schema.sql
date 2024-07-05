@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS pizza (
     pizza_neve VARCHAR(50) NOT NULL,
       pizza_ara INT(5) NOT NULL,
      feltet VARCHAR(255) NOT NULL,
+     kep VARCHAR(255) NOT NULL,
     PRIMARY KEY (pizza_neve),
     FOREIGN KEY (pizza_neve) REFERENCES rendelhetoTermek(nev) ON DELETE CASCADE
 );
@@ -35,6 +36,7 @@ CREATE TABLE IF NOT EXISTS hamburger (
     hamburger_neve VARCHAR(50) NOT NULL,
       hamburger_ara INT(5) NOT NULL,
      tartalom VARCHAR(255) NOT NULL,
+    kep VARCHAR(255) NOT NULL,
     PRIMARY KEY (hamburger_neve),
     FOREIGN KEY (hamburger_neve) REFERENCES rendelhetoTermek(nev) ON DELETE CASCADE
 );
@@ -43,6 +45,7 @@ CREATE TABLE IF NOT EXISTS alkoholosItal (
     alkoholos_ital_neve VARCHAR(50) NOT NULL,
       alkoholos_ital_ara INT(5) NOT NULL,
      alkohol_szazalek VARCHAR(4) NOT NULL,
+    kep VARCHAR(255) NOT NULL,
     PRIMARY KEY (alkoholos_ital_neve),
     FOREIGN KEY (alkoholos_ital_neve) REFERENCES rendelhetoTermek(nev) ON DELETE CASCADE
 );
@@ -51,6 +54,7 @@ CREATE TABLE IF NOT EXISTS alkoholmentesItal (
     alkoholmentes_ital_neve VARCHAR(50) NOT NULL,
       alkoholmentes_ital_ara INT(5) NOT NULL,
      cukortartalom VARCHAR(4) NOT NULL,
+    kep VARCHAR(255) NOT NULL,
     PRIMARY KEY (alkoholmentes_ital_neve),
     FOREIGN KEY (alkoholmentes_ital_neve) REFERENCES rendelhetoTermek(nev) ON DELETE CASCADE
 );
