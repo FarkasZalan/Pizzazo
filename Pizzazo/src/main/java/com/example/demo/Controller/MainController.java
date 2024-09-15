@@ -757,7 +757,7 @@ public class MainController {
             return "redirect:/alkoholos_adat_modositas";
         }
         Alcohol modositando = alcoholRepo.findById(modifyAlcoholName).get();
-        modify.alkoholosModositas(modositando, modositando.getName(), ar, kiegeszito);
+        modify.alcoholModification(modositando, modositando.getName(), ar, kiegeszito);
         if (!modositando.getImage().isEmpty()) {
             oldImageForItem = modositando.getImage();
         }
@@ -808,7 +808,7 @@ public class MainController {
             return "redirect:/alkoholmentes_adat_modositas";
         }
         AlcoholFree modositando = alcoholFreeRepo.findById(modifyAlcoholFreeName).get();
-        modify.alkoholmentesModositas(modositando, modositando.getName(), ar, kiegeszito);
+        modify.alcoholFreeModification(modositando, modositando.getName(), ar, kiegeszito);
         if (!modositando.getImage().isEmpty()) {
             oldImageForItem = modositando.getImage();
         }

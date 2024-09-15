@@ -50,29 +50,29 @@ public class Create {
         return orderDate;
     }
 
-    public String userCreate(Users users) {
+    public String userCreate(Users newUser) {
         boolean userExists = false;
-        if (!(users.getId().contains("@") && (users.getId().contains(".")))) {
+        if (!(newUser.getId().contains("@") && (newUser.getId().contains(".")))) {
             return "Érvénytelen email cím, az email címben kell lennie '@'-nak és egy érvényes domainnek";
         }
-        for (Users users1 : usersRepo.listOfTheUsers()) {
+        for (Users userElement : usersRepo.listOfTheUsers()) {
             // if user already exists with the given email then return with the
             // email is alredy registered message
-            if (Objects.equals(users.getId(), users1.getId())) {
+            if (Objects.equals(newUser.getId(), userElement.getId())) {
                 userExists = true;
                 break;
             }
         }
         // if the email is not registered yet then save the user in the repo
         if (!userExists) {
-            usersRepo.save(users);
-            usersRepo.listOfTheUsers().add(users);
+            usersRepo.save(newUser);
+            usersRepo.listOfTheUsers().add(newUser);
             return "Sikeres mentés!";
         }
         return "Ezzel az email címmel már regisztráltak!";
     }
 
-    public int orderCreate(Map<Item, Integer> cartList, Users users, int total) {
+    public int orderCreate(Map<Item, Integer> cartList, Users userOrder, int total) {
         // get the current time for the order date
         Calendar cal = Calendar.getInstance();
         Date date = cal.getTime();
@@ -80,26 +80,26 @@ public class Create {
         orderDate = dateFormat.format(date);
 
         // save the order
-        Orders orders = new Orders(total, orderDate, users, cartList);
+        Orders orders = new Orders(total, orderDate, userOrder, cartList);
         ordersRepo.save(orders);
         return orders.getId();
     }
 
-    public Map<Item, Integer> addElementToCart(Map<Item, Integer> cartList, String pizzaName) {
+    public Map<Item, Integer> addElementToCart(Map<Item, Integer> cartList, String itemName) {
         boolean alreadyInTheCart = false;
         // search the product in the item list
         for (Item items : itemsRepo.listOfItems()) {
-            if (pizzaName.equals(items.getItemName())) {
+            if (itemName.equals(items.getItemName())) {
                 // if found the product in the item list and
                 // the cart list is empty then put inside with the quantity 1
-                if (cartList.size() == 0) {
+                if (cartList.isEmpty()) {
                     cartList.put(items, 1);
                 } else {
                     // if the cart isn't empty then go through the list
                     // if the given element is already in the cart
                     for (Map.Entry<Item, Integer> cartElement : cartList.entrySet()) {
                         // if the element is already in the cart then increase the quantity for this item
-                        if (cartElement.getKey().getItemName().contains(pizzaName)) {
+                        if (cartElement.getKey().getItemName().contains(itemName)) {
                             Integer quantity = cartElement.getValue();
                             quantity++;
                             cartElement.setValue(quantity);

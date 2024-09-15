@@ -22,11 +22,11 @@ public class Login {
         String message = "";
         // check if the given email is in the users list
         // (there are registered an account with this email)
-        for (Users users : usersRepo.listOfTheUsers()) {
-            if (Objects.equals(users.getId(), email)) {
+        for (Users userElement : usersRepo.listOfTheUsers()) {
+            if (Objects.equals(userElement.getId(), email)) {
                 message = "Van email";
             }
-            if (Objects.equals(users.getPassword(), password) && Objects.equals(users.getId(), email)) {
+            if (Objects.equals(userElement.getPassword(), password) && Objects.equals(userElement.getId(), email)) {
                 // if the email found and the password is correct then
                 // it will return with this string and show on the html area later
                 message = "Sikeres belépés";
