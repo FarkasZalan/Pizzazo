@@ -59,7 +59,6 @@ CREATE TABLE IF NOT EXISTS alcohol_free (
     FOREIGN KEY (alcohol_free_name) REFERENCES item(itemName) ON DELETE CASCADE
 );
 
--- -- --termekNeve listaban cascadolva
 -- alter table order_detailed_list DROP FOREIGN KEY FKohpyu8g5ttgi45tv08wg85692;
 -- alter table order_detailed_list ADD constraint FKohpyu8g5ttgi45tv08wg85692 foreign key (item_name_key) references item (itemName) ON DELETE CASCADE;
 
