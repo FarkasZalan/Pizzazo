@@ -5,86 +5,83 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
+// Pizza table is 'pizza'
 @Table(name = "pizza")
 public class Pizza {
+    // I used the pizza ID as the pizza name and I identify this variable as 'name'
     @Id
-    @Column(name = "pizza_neve", nullable = false, length = 50)
-    private String nev;
+    @Column(name = "pizza_name", nullable = false, length = 50)
+    private String name;
 
+    // I create a connection between the 'item' table and the 'pizza' table
+    // and if the item is deleted from the table then it will be deleted from the other one too
     @MapsId
     @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "pizza_neve", nullable = false)
-    private RendelhetoTermek rendelhetotermek;
+    @JoinColumn(name = "pizza_name", nullable = false)
+    private Item item;
 
-    @Column(name = "pizza_ara", nullable = false)
-    private Integer pizzaAra;
+    // this column will store the pizza price
+    @Column(name = "pizza_price", nullable = false)
+    private Integer pizzaPrice;
 
-    @Column(name = "feltet", nullable = false, length = 100)
-    private String feltet;
+    // this column will store the content of the pizza
+    @Column(name = "toppings", nullable = false, length = 100)
+    private String toppings;
 
-    public String getKep() {
-        return kep;
+    public String getImage() {
+        return image;
     }
 
-    public void setKep(String kep) {
-        this.kep = kep;
+    public void setImage(String kep) {
+        this.image = kep;
     }
 
+    // this column will store the pizza image as a MEDIUMBLOB
     @Lob
-    @Column(name = "kep", nullable = false, columnDefinition = "MEDIUMBLOB")
-    private String kep;
+    @Column(name = "image", nullable = false, columnDefinition = "MEDIUMBLOB")
+    private String image;
 
     public Pizza() {
     }
 
-    public Pizza(String nev, RendelhetoTermek rendelhetotermek, Integer pizzaAra, String feltet, String kep) {
-        this.nev = nev;
-        this.rendelhetotermek = rendelhetotermek;
-        this.pizzaAra = pizzaAra;
-        this.feltet = feltet;
-        this.kep = kep;
+    public Pizza(String name, Item item, Integer pizzaPrice, String toppings, String image) {
+        this.name = name;
+        this.item = item;
+        this.pizzaPrice = pizzaPrice;
+        this.toppings = toppings;
+        this.image = image;
     }
 
-    public String getFeltet() {
-        return feltet;
+    public String getToppings() {
+        return toppings;
     }
 
-    public void setFeltet(String feltet) {
-        this.feltet = feltet;
+    public void setToppings(String toppings) {
+        this.toppings = toppings;
     }
 
-    public Integer getPizzaAra() {
-        return pizzaAra;
+    public Integer getPizzaPrice() {
+        return pizzaPrice;
     }
 
-    public void setPizzaAra(Integer pizzaAra) {
-        this.pizzaAra = pizzaAra;
+    public void setPizzaPrice(Integer pizzaPrice) {
+        this.pizzaPrice = pizzaPrice;
     }
 
-    public RendelhetoTermek getRendelhetotermek() {
-        return rendelhetotermek;
+    public Item getItem() {
+        return item;
     }
 
-    public void setRendelhetotermek(RendelhetoTermek rendelhetotermek) {
-        this.rendelhetotermek = rendelhetotermek;
+    public void setItem(Item item) {
+        this.item = item;
     }
 
-    public String getNev() {
-        return nev;
+    public String getName() {
+        return name;
     }
 
-    public void setNev(String nev) {
-        this.nev = nev;
-    }
-
-    @Override
-    public String toString() {
-        return "Pizza{" +
-                "id='" + nev + '\'' +
-                ", rendelhetotermek=" + rendelhetotermek +
-                ", pizzaAra=" + pizzaAra +
-                ", feltet='" + feltet + '\'' +
-                '}';
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -11,14 +11,21 @@ import java.util.List;
 
 @Transactional
 public interface PizzaRepo extends JpaRepository<Pizza, String> {
+    // list all pizzas
     @Query(value = "select * from pizza", nativeQuery = true)
-    List<Pizza> pizzakListaja();
+    List<Pizza> listOfPizzas();
 
+    // this method is modify the item image by the item id(name).
+    // because all items have a default image in the beginning
+    // just need to update the old image
     @Modifying
-    @Query(value="update pizza set kep= :kep where pizza_neve = :pizza_neve", nativeQuery = true)
-    void termekKepe(@Param("kep") String kep, @Param("pizza_neve") String pizza_neve);
+    @Query(value="update pizza set image= :image where pizza_name = :pizza_name", nativeQuery = true)
+    void itemImage(@Param("image") String image, @Param("pizza_name") String pizza_name);
 
+    // basic updates for the item.
+    // need all the variables to update everything and
+    // don't modify to null
     @Modifying
-    @Query(value="update pizza set pizza_ara= :pizza_ara, feltet= :feltet where pizza_neve = :pizza_neve", nativeQuery = true)
-    void alapadatFrissites(@Param("pizza_ara") Integer pizza_ara, @Param("feltet") String feltet, @Param("pizza_neve") String pizza_neve);
+    @Query(value="update pizza set pizza_price= :pizza_price, toppings= :toppings where pizza_name = :pizza_name", nativeQuery = true)
+    void update(@Param("pizza_price") Integer pizza_price, @Param("toppings") String toppings, @Param("pizza_name") String pizza_name);
 }

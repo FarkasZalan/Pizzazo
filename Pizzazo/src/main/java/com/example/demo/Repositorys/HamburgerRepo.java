@@ -11,14 +11,21 @@ import java.util.List;
 
 @Transactional
 public interface HamburgerRepo extends JpaRepository<Hamburger, String> {
+    // list all hamburgers
     @Query(value = "select * from hamburger", nativeQuery = true)
-    List<Hamburger> hamburgerekListaja();
+    List<Hamburger> listOfHamburgers();
 
+    // this method is modify the item image by the item id(name).
+    // because all items have a default image in the beginning
+    // just need to update the old image
     @Modifying
-    @Query(value="update hamburger set kep= :kep where hamburger_neve = :hamburger_neve", nativeQuery = true)
-    void termekKepe(@Param("kep") String kep, @Param("hamburger_neve") String hamburger_neve);
+    @Query(value="update hamburger set image= :image where hamburger_name = :hamburger_name", nativeQuery = true)
+    void itemImage(@Param("image") String image, @Param("hamburger_name") String hamburger_name);
 
+    // basic updates for the item.
+    // need all the variables to update everything and
+    // don't modify to null
     @Modifying
-    @Query(value="update hamburger set hamburger_ara= :hamburger_ara, tartalom= :tartalom where hamburger_neve = :hamburger_neve", nativeQuery = true)
-    void alapadatFrissites(@Param("hamburger_ara") Integer hamburger_ara,  @Param("tartalom") String tartalom, @Param("hamburger_neve") String hamburger_neve);
+    @Query(value="update hamburger set hamburger_price= :hamburger_price, hamburger_content= :hamburger_content where hamburger_name = :hamburger_name", nativeQuery = true)
+    void update(@Param("hamburger_price") Integer hamburger_price, @Param("hamburger_content") String hamburger_content, @Param("hamburger_name") String hamburger_name);
 }
