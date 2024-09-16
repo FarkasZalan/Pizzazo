@@ -21,6 +21,7 @@ import java.util.*;
 // the implementation of all functions is organized into classes
 // where I have written a detailed explanation for each
 public class MainController {
+    // Repositories for various entities
     @Autowired
     private final ItemRepo itemsRepo;
     private final PizzaRepo pizzasRepo;
@@ -29,18 +30,26 @@ public class MainController {
     private final AlcoholFreeRepo alcoholFreeRepo;
     private final OrdersRepo ordersRepo;
     private final UsersRepo usersRepo;
+
     int totalAmount = 0;
+    
+    // Reference to the currently logged-in user
     boolean userLoggenIn = false;
     Users loggedUser;
+    
     boolean alreadyHaveAccount = false;
     Map<Item, Integer> cartList = new HashMap<>();
     List<Orders> userShoppingHistory = new ArrayList<>();
+    
     boolean userIsAdmin = false;
+    
     String modifyPizzaName;
     String modifyHamburgerName;
     String modifyAlcoholName;
     String modifyAlcoholFreeName;
     String oldImageForItem = "";
+
+    // Service class for Email sending
     private EmailSend emailSend;
 
     public MainController(ItemRepo itemsRepo, PizzaRepo pizzasRepo, HamburgerRepo hamburgerRepo, AlcoholRepo alcoholRepo, AlcoholFreeRepo alcoholFreeRepo, OrdersRepo ordersRepo, UsersRepo usersRepo) {
