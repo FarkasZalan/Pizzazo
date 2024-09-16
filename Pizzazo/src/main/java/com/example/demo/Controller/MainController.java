@@ -52,6 +52,7 @@ public class MainController {
     // Service class for Email sending
     private EmailSend emailSend;
 
+    // Constructor for dependency injection of repositories
     public MainController(ItemRepo itemsRepo, PizzaRepo pizzasRepo, HamburgerRepo hamburgerRepo, AlcoholRepo alcoholRepo, AlcoholFreeRepo alcoholFreeRepo, OrdersRepo ordersRepo, UsersRepo usersRepo) {
         this.itemsRepo = itemsRepo;
         this.pizzasRepo = pizzasRepo;
