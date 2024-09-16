@@ -13,6 +13,7 @@ public class Login {
     private final ItemRepo itemRepo;
     private final UsersRepo usersRepo;
 
+    // Constructor for dependency injection of repositories
     public Login(ItemRepo itemRepo, PizzaRepo pizzasRepo, HamburgerRepo hamburgerRepo, AlcoholRepo alcoholRepo, AlcoholFreeRepo alcoholFreeRepo, OrdersRepo ordersRepo, UsersRepo usersRepo) {
         this.itemRepo = itemRepo;
         this.usersRepo = usersRepo;
